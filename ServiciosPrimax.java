@@ -61,7 +61,7 @@ public class ServiciosPrimax {
     public static void mostrarMenu() {
         boolean salir = false;
         double totalFinal = 0;
-        StringBuilder resumenServicios = new StringBuilder();
+        StringBuilder resumenServicios = new StringBuilder();   // Almacena lo de abajo
         String cliente = correo;
 
         while (!salir) {
@@ -83,7 +83,8 @@ public class ServiciosPrimax {
                     double galones = sc.nextDouble();
                     sc.nextLine();
                     total = galones * 20.50;
-                    descripcion = String.format("Gasolina: %.2f galones x S/20.50 = S/%.2f", galones, total);
+                    descripcion = String.format("Gasolina: %.2f galones x S/20.50 = S/%.2f", galones, total); //Se devuelve dos variables declaradas
+                    //Descripcion guardar un resumen textual del servicio o producto
                     break;
 
                 case 2:
@@ -143,15 +144,15 @@ public class ServiciosPrimax {
                     continue;
             }
 
-            resumenServicios.append("- ").append(descripcion).append("\n");
+            resumenServicios.append("- ").append(descripcion).append("\n");  //Se utiliza .append para acumular texto linea por linea de forma ordenada
             totalFinal += total;
 
             System.out.print("\n¿Desea volver al menú? (s/n): ");
             String volver = sc.nextLine();
             if (volver.equalsIgnoreCase("n")) {
-                System.out.printf("El costo total de los productos y servicios seleccionados es: S/ %.2f\n", totalFinal);
+                System.out.printf("El costo total de los productos y servicios seleccionados es: S/ %.2f\n", totalFinal);  //el printf imprime el total en soles pero con 2 decimales
                 metodoPago(totalFinal);
-                generarBoleta(cliente, resumenServicios.toString(), totalFinal);
+                generarBoleta(cliente, resumenServicios.toString(), totalFinal); //el to.String genera cadena de texto de todo lo que se almaceno dentro de resumenServicios
                 salir = true;
             }
         }
